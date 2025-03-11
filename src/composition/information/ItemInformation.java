@@ -20,14 +20,6 @@ public class ItemInformation {
         this.itemModification = itemModification;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
     public ItemBonuses getItemBonuses() {
         return itemBonuses;
     }
