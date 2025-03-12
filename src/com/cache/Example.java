@@ -1,39 +1,41 @@
-import composition.ItemCompositionProvider;
+package cache;
+
+import api.ItemCompositionProvider;
+import cache.composition.CompositionManager;
+import cache.provider.ItemProvider;
 
 import java.util.Map;
 
 /**
- * Implementation of the composition information provider for the ItemType composition.
+ * Implementation of the com.cache.composition information provider for the ItemType com.cache.composition.
  * <p>
- * This class is responsible for providing the necessary composition data for items, such as their name, weight, bonuses,
+ * This class is responsible for providing the necessary com.cache.composition data for items, such as their name, weight, bonuses,
  * properties, and modifications. It implements the {@link ItemCompositionProvider} interface to adhere to the required
- * structure for composition providers.
+ * structure for com.cache.composition providers.
  * </p>
  * <p>
  * Ensure all required methods from {@link ItemCompositionProvider} are properly overridden to provide correct data.
  * </p>
  */
-public class ItemTypeExample implements ItemCompositionProvider {
+public class Example implements ItemCompositionProvider {
 
     /**
      * Main method for initializing and interacting with the {@link CompositionManager}.
      * <p>
-     * This method demonstrates how to initialize the composition manager and access the composition data.
+     * This method demonstrates how to initialize the com.cache.composition manager and access the com.cache.composition data.
      * </p>
-     *
      * @param args Command line arguments (not used in this example).
      */
     public static void main(String[] args) {
-
         /**
          * During decoding, you will instantiate the {@link CompositionManager} statically by calling
          * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#init(ItemCompositionProvider)}
-         * with the {@link ItemTypeExample} instance as the parameter.
+         * with the {@link Example} instance as the parameter.
          */
-        CompositionManager.INSTANCE.init(new ItemTypeExample());
+        CompositionManager.INSTANCE.init(new Example());
 
         /**
-         * After initialization, the {@link CompositionManager} will store the item composition data in the static field
+         * After initialization, the {@link CompositionManager} will store the item com.cache.composition data in the static field
          * {@link CompositionManager#PROVIDER_MAP}. You can access this data by calling
          * {@link CompositionManager#PROVIDER_MAP} with the desired item ID.
          * <p>
@@ -47,7 +49,7 @@ public class ItemTypeExample implements ItemCompositionProvider {
          * </p>
          */
         int itemId = 4151;
-        final ItemProvider provider = CompositionManager.PROVIDER_MAP.getOrDefault(itemId, null);
+        final ItemProvider provider =  CompositionManager.get(itemId);
         System.out.println(provider.toString());
     }
 

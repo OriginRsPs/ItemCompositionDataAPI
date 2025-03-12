@@ -1,8 +1,8 @@
-package composition.information;
+package cache.provider.information;
 
-import composition.bonuses.ItemBonuses;
-import composition.modification.ItemModification;
-import composition.properties.ItemProperties;
+import cache.provider.bonuses.ItemBonuses;
+import cache.provider.modification.ItemModification;
+import cache.provider.properties.ItemProperties;
 
 public class ItemInformation {
 

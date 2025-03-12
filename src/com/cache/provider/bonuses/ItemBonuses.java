@@ -1,4 +1,4 @@
-package composition.bonuses;
+package cache.provider.bonuses;
 
 public class ItemBonuses {
 

@@ -1,13 +1,22 @@
-import composition.ItemCompositionProvider;
-import composition.information.ItemInformation;
-import composition.bonuses.ItemBonuses;
-import composition.modification.ItemModification;
-import composition.params.Params;
-import composition.properties.ItemProperties;
+package cache.provider;
+
+import api.ItemCompositionProvider;
+import cache.composition.CompositionManager;
+import cache.provider.bonuses.ItemBonuses;
+import cache.provider.information.ItemInformation;
+import cache.provider.modification.ItemModification;
+import cache.composition.params.Params;
+import cache.provider.properties.ItemProperties;
 
 import java.util.Map;
 
-public record ItemProvider(ItemInformation itemInformation) {
+public class ItemProvider {
+
+    final ItemInformation itemInformation;
+
+    public ItemProvider(final ItemInformation itemInformation) {
+        this.itemInformation = itemInformation;
+    }
 
     public void build(final ItemCompositionProvider compositionProvider) {
         final ItemBonuses bonuses = itemInformation.getItemBonuses();

@@ -25,5 +25,11 @@ bin/
 ### VS Code ###
 .vscode/
 
+/idea/*
+/gradle/*
+gradlew
+gradlew.bat
+
+
 ### Mac OS ###
 .DS_Store

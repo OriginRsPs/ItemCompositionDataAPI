@@ -1,9 +1,12 @@
+package cache.composition;
 
-import composition.ItemCompositionProvider;
-import composition.bonuses.ItemBonuses;
-import composition.information.ItemInformation;
-import composition.modification.ItemModification;
-import composition.properties.ItemProperties;
+import cache.provider.bonuses.ItemBonuses;
+import cache.provider.information.ItemInformation;
+import cache.provider.modification.ItemModification;
+import cache.provider.properties.ItemProperties;
+import api.ItemCompositionProvider;
+import cache.provider.ItemProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +15,14 @@ public final class CompositionManager {
 
     public static final CompositionManager INSTANCE = new CompositionManager();
     public static final Map<Integer, ItemProvider> PROVIDER_MAP = new HashMap<>();
+
+    public static @NotNull ItemProvider get(int itemId) {
+        final ItemProvider provider = PROVIDER_MAP.getOrDefault(itemId, null);
+        if (provider == null)
+            throw new NullPointerException("ItemComposition Provider does not exist for Id: " + itemId);
+
+        return provider;
+    }
 
     public void init(final ItemCompositionProvider composition) {
         final String name = composition.getName();
