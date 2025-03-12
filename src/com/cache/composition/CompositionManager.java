@@ -13,11 +13,6 @@ public final class CompositionManager {
     public static final Int2ObjectMap<ItemProvider> PROVIDER_MAP = new Int2ObjectOpenHashMap<>();
     public static ItemProvider get(final ItemCompositionProvider composition) {
         final int itemId = composition.getId();
-        ItemProvider provider = PROVIDER_MAP.getOrDefault(itemId, null);
-
-        if (provider == null)
-            provider = new ItemProvider(new ItemInformation(composition.getName(), (composition.getWeight() / 1000D), new ItemBonuses(), new ItemProperties(composition.getWearPos1() == 3 && composition.getWearPos2() == 5), new ItemModification())).build(composition);
-
-        return provider;
+        return PROVIDER_MAP.getOrDefault(itemId, new ItemProvider(new ItemInformation(composition.getName(), (composition.getWeight() / 1000D), new ItemBonuses(), new ItemProperties(composition.getWearPos1() == 3 && composition.getWearPos2() == 5), new ItemModification())).build(composition));
     }
 }

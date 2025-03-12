@@ -36,12 +36,12 @@ public class Example implements ItemCompositionProvider {
          * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#createProvider(ItemCompositionProvider)}
          * with the {@link Example} instance as the parameter.
          */
-        final Example example = new Example();
+        final Example exampleComposition = new Example();
 
         /**
          * You Can assign the Variable above to a Class field called Provider
          */
-        example.provider = CompositionManager.get(example);
+        exampleComposition.provider = CompositionManager.get(exampleComposition);
     }
 
     /**
