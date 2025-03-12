@@ -18,7 +18,7 @@ public class ItemProvider {
         this.itemInformation = itemInformation;
     }
 
-    public void build(final ItemCompositionProvider compositionProvider) {
+    public ItemProvider build(final ItemCompositionProvider compositionProvider) {
         final ItemBonuses bonuses = itemInformation.getItemBonuses();
         final ItemModification modification = itemInformation.getItemModification();
         final ItemProperties properties = itemInformation.getItemProperties();
@@ -112,6 +112,7 @@ public class ItemProvider {
         }
 
         CompositionManager.PROVIDER_MAP.put(compositionProvider.getId(), this);
+        return this;
     }
 
     @Override

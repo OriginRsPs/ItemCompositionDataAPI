@@ -29,10 +29,10 @@ public class Example implements ItemCompositionProvider {
     public static void main(String[] args) {
         /**
          * During decoding, you will instantiate the {@link CompositionManager} statically by calling
-         * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#init(ItemCompositionProvider)}
+         * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#createProvider(ItemCompositionProvider)}
          * with the {@link Example} instance as the parameter.
          */
-        CompositionManager.INSTANCE.init(new Example());
+        CompositionManager.INSTANCE.createProvider(new Example());
 
         /**
          * After initialization, the {@link CompositionManager} will store the item com.cache.composition data in the static field

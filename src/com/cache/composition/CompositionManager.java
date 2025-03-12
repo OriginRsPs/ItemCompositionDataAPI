@@ -24,14 +24,7 @@ public final class CompositionManager {
         return provider;
     }
 
-    public void init(final ItemCompositionProvider composition) {
-        final String name = composition.getName();
-        final double weight = composition.getWeight() / 1000D;
-        final ItemBonuses bonuses = new ItemBonuses();
-        final ItemProperties properties = new ItemProperties();
-        final ItemModification modification = new ItemModification();
-
-        final ItemProvider provider = new ItemProvider(new ItemInformation(name, weight, bonuses, properties, modification));
-        provider.build(composition);
+    public ItemProvider createProvider(final ItemCompositionProvider composition) {
+        return new ItemProvider(new ItemInformation(composition.getName(), (composition.getWeight() / 1000D), new ItemBonuses(), new ItemProperties(), new ItemModification())).build(composition);
     }
 }
