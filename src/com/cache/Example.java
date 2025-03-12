@@ -30,39 +30,18 @@ public class Example implements ItemCompositionProvider {
      * @param args Command line arguments (not used in this example).
      */
     public static void main(String[] args) {
+
         /**
          * During decoding, you will instantiate the {@link CompositionManager} statically by calling
          * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#createProvider(ItemCompositionProvider)}
          * with the {@link Example} instance as the parameter.
          */
-
         final Example example = new Example();
-        example.provider = CompositionManager.INSTANCE.createProvider(example);
 
         /**
          * You Can assign the Variable above to a Class field called Provider
-         * Or follower step2 for receiving statically based on ItemId
          */
-
-        // Optional Step 2:
-        /**
-         * After initialization, the {@link CompositionManager} will store the item com.cache.composition data in the static field
-         * {@link CompositionManager#PROVIDER_MAP}. You can access this data by calling
-         * {@link CompositionManager#PROVIDER_MAP} with the desired item ID.
-         * <p>
-         * This will give you access to an {@link ItemProvider} object, which contains various types of data, including:
-         * <ul>
-         *     <li>{@link ItemBonuses} - The bonuses associated with the item.</li>
-         *     <li>{@link ItemInformation} - General information about the item (e.g., name, weight, etc.).</li>
-         *     <li>{@link ItemModification} - Any modifications applied to the item.</li>
-         *     <li>{@link ItemProperties} - Properties of the item, such as its durability, rarity, etc.</li>
-         * </ul>
-         * </p>
-         */
-
-        // you can insert the item composition to the param args which will always return a non null provider statically
-        final ItemProvider provider = CompositionManager.get(example);
-        System.out.println(provider.toString());
+        example.provider = CompositionManager.get(example);
     }
 
     /**

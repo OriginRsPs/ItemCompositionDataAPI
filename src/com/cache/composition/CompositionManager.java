@@ -11,18 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class CompositionManager {
-
-    public static final CompositionManager INSTANCE = new CompositionManager();
     public static final Map<Integer, ItemProvider> PROVIDER_MAP = new HashMap<>();
-
     public static ItemProvider get(final ItemCompositionProvider composition) {
         ItemProvider provider = PROVIDER_MAP.getOrDefault(composition.getId(), null);
         if (provider == null)
             provider = new ItemProvider(new ItemInformation(composition.getName(), (composition.getWeight() / 1000D), new ItemBonuses(), new ItemProperties(), new ItemModification())).build(composition);
         return provider;
-    }
-
-    public ItemProvider createProvider(final ItemCompositionProvider composition) {
-        return new ItemProvider(new ItemInformation(composition.getName(), (composition.getWeight() / 1000D), new ItemBonuses(), new ItemProperties(), new ItemModification())).build(composition);
     }
 }
