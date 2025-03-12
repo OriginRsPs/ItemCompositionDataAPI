@@ -1,11 +1,11 @@
-package cache.composition;
+package repository.composition;
 
-import cache.provider.bonuses.ItemBonuses;
-import cache.provider.information.ItemInformation;
-import cache.provider.modification.ItemModification;
-import cache.provider.properties.ItemProperties;
-import api.ItemCompositionProvider;
-import cache.provider.ItemProvider;
+import repository.provider.bonuses.ItemBonuses;
+import repository.provider.information.ItemInformation;
+import repository.provider.modification.ItemModification;
+import repository.provider.properties.ItemProperties;
+import repository.api.ItemCompositionProvider;
+import repository.provider.ItemProvider;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 

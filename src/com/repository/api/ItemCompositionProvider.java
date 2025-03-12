@@ -1,4 +1,4 @@
-package api;
+package repository.api;
 
 import java.util.Map;
 

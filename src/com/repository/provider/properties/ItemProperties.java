@@ -1,4 +1,4 @@
-package cache.provider.properties;
+package repository.provider.properties;
 
 public class ItemProperties {
 

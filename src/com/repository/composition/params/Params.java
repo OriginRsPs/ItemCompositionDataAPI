@@ -1,4 +1,4 @@
-package cache.composition.params;
+package repository.composition.params;
 
 public enum Params {
 

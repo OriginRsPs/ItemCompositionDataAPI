@@ -1,8 +1,8 @@
-package cache.provider.information;
+package repository.provider.information;
 
-import cache.provider.bonuses.ItemBonuses;
-import cache.provider.modification.ItemModification;
-import cache.provider.properties.ItemProperties;
+import repository.provider.bonuses.ItemBonuses;
+import repository.provider.modification.ItemModification;
+import repository.provider.properties.ItemProperties;
 
 public class ItemInformation {
 

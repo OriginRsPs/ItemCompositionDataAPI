@@ -1,12 +1,12 @@
-package cache.provider;
+package repository.provider;
 
-import api.ItemCompositionProvider;
-import cache.composition.CompositionManager;
-import cache.provider.bonuses.ItemBonuses;
-import cache.provider.information.ItemInformation;
-import cache.provider.modification.ItemModification;
-import cache.composition.params.Params;
-import cache.provider.properties.ItemProperties;
+import repository.api.ItemCompositionProvider;
+import repository.composition.CompositionManager;
+import repository.provider.bonuses.ItemBonuses;
+import repository.provider.information.ItemInformation;
+import repository.provider.modification.ItemModification;
+import repository.composition.params.Params;
+import repository.provider.properties.ItemProperties;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

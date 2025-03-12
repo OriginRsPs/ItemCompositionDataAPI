@@ -1,8 +1,8 @@
-package cache;
+package repository;
 
-import api.ItemCompositionProvider;
-import cache.composition.CompositionManager;
-import cache.provider.ItemProvider;
+import repository.api.ItemCompositionProvider;
+import repository.composition.CompositionManager;
+import repository.provider.ItemProvider;
 
 import java.util.Map;
 
