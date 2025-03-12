@@ -6,6 +6,10 @@ public class ItemProperties {
     private boolean corpBane;
     private boolean isTwoHanded;
 
+    public ItemProperties(final boolean isTwoHanded) {
+        this.isTwoHanded = isTwoHanded;
+    }
+
     public boolean isDegradeable() {
         return degradeable;
     }

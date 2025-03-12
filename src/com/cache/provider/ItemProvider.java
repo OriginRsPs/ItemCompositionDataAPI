@@ -7,6 +7,7 @@ import cache.provider.information.ItemInformation;
 import cache.provider.modification.ItemModification;
 import cache.composition.params.Params;
 import cache.provider.properties.ItemProperties;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -19,20 +20,38 @@ public class ItemProvider {
     }
 
     public ItemProvider build(final ItemCompositionProvider compositionProvider) {
-        final ItemBonuses bonuses = itemInformation.getItemBonuses();
-        final ItemModification modification = itemInformation.getItemModification();
-        final ItemProperties properties = itemInformation.getItemProperties();
+        final DefaultResult result = getDefaultResult();
+        setParamInformation(compositionProvider, result.bonuses, result.modification, result.properties);
+        CompositionManager.PROVIDER_MAP.put(compositionProvider.getId(), this);
+        return this;
+    }
 
-        properties.setTwoHanded(compositionProvider.getWearPos1() == 3 && compositionProvider.getWearPos2() == 5);
+    final @NotNull DefaultResult getDefaultResult() {
+        return new DefaultResult(itemInformation.getItemBonuses(), itemInformation.getItemModification(), itemInformation.getItemProperties());
+    }
+
+    private static class DefaultResult {
+        public final ItemBonuses bonuses;
+        public final ItemModification modification;
+        public final ItemProperties properties;
+
+        public DefaultResult(ItemBonuses bonuses, ItemModification modification, ItemProperties properties) {
+            this.bonuses = bonuses;
+            this.modification = modification;
+            this.properties = properties;
+        }
+    }
+
+    void setParamInformation(final ItemCompositionProvider compositionProvider, final ItemBonuses bonuses, final ItemModification modification, final ItemProperties properties) {
         final Map<Integer, Object> params = compositionProvider.getParams();
-        for (final Params enumValue : Params.array()) {
-            final Object value = params.get(enumValue.getId());
+        for (final Params param : Params.array()) {
+            final Object value = params.get(param.getId());
             if (value != null) {
                 if (value instanceof String)
                     continue;
 
                 final int result = (Integer) value;
-                final String paramName = enumValue.name();
+                final String paramName = param.name();
                 switch (paramName) {
                     case "STAB_ATTACK_BONUS":
                         bonuses.setAstab(result);
@@ -110,9 +129,6 @@ public class ItemProvider {
                 }
             }
         }
-
-        CompositionManager.PROVIDER_MAP.put(compositionProvider.getId(), this);
-        return this;
     }
 
     @Override

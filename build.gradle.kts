@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains:annotations:26.0.2")
+    implementation("it.unimi.dsi:fastutil:8.5.15")
 }
 
 java {
