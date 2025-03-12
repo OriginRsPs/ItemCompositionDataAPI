@@ -4,6 +4,7 @@ import api.ItemCompositionProvider;
 import cache.composition.CompositionManager;
 import cache.provider.ItemProvider;
 
+import java.security.Provider;
 import java.util.Map;
 
 /**
@@ -19,11 +20,14 @@ import java.util.Map;
  */
 public class Example implements ItemCompositionProvider {
 
+    public ItemProvider provider;
+
     /**
      * Main method for initializing and interacting with the {@link CompositionManager}.
      * <p>
      * This method demonstrates how to initialize the com.cache.composition manager and access the com.cache.composition data.
      * </p>
+     *
      * @param args Command line arguments (not used in this example).
      */
     public static void main(String[] args) {
@@ -32,8 +36,16 @@ public class Example implements ItemCompositionProvider {
          * {@link CompositionManager#INSTANCE}. Once the manager is initialized, call {@link CompositionManager#createProvider(ItemCompositionProvider)}
          * with the {@link Example} instance as the parameter.
          */
-        CompositionManager.INSTANCE.createProvider(new Example());
 
+        final Example example = new Example();
+        example.provider = CompositionManager.INSTANCE.createProvider(example);
+
+        /**
+         * You Can assign the Variable above to a Class field called Provider
+         * Or follower step2 for receiving statically based on ItemId
+         */
+
+        // Optional Step 2:
         /**
          * After initialization, the {@link CompositionManager} will store the item com.cache.composition data in the static field
          * {@link CompositionManager#PROVIDER_MAP}. You can access this data by calling
@@ -49,12 +61,13 @@ public class Example implements ItemCompositionProvider {
          * </p>
          */
         int itemId = 4151;
-        final ItemProvider provider =  CompositionManager.get(itemId);
+        final ItemProvider provider = CompositionManager.get(itemId);
         System.out.println(provider.toString());
     }
 
     /**
      * ItemComposition Class Field "id" will be returned here
+     *
      * @return
      */
     @Override
@@ -64,6 +77,7 @@ public class Example implements ItemCompositionProvider {
 
     /**
      * ItemComposition Class Field "name" will be returned here
+     *
      * @return
      */
     @Override
@@ -73,6 +87,7 @@ public class Example implements ItemCompositionProvider {
 
     /**
      * ItemComposition Class Field "wearPos1" will be returned here
+     *
      * @return
      */
     @Override
@@ -82,6 +97,7 @@ public class Example implements ItemCompositionProvider {
 
     /**
      * ItemComposition Class Field "wearPos2" will be returned here
+     *
      * @return
      */
     @Override
@@ -91,6 +107,7 @@ public class Example implements ItemCompositionProvider {
 
     /**
      * ItemComposition Class Field "weight" will be returned here
+     *
      * @return
      */
     @Override
@@ -100,6 +117,7 @@ public class Example implements ItemCompositionProvider {
 
     /**
      * ItemComposition Class Object "params" will be returned here
+     *
      * @return
      */
     @Override
