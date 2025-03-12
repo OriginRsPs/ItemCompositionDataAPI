@@ -4,7 +4,6 @@ import api.ItemCompositionProvider;
 import cache.composition.CompositionManager;
 import cache.provider.ItemProvider;
 
-import java.security.Provider;
 import java.util.Map;
 
 /**
@@ -60,8 +59,9 @@ public class Example implements ItemCompositionProvider {
          * </ul>
          * </p>
          */
-        int itemId = 4151;
-        final ItemProvider provider = CompositionManager.get(itemId);
+
+        // you can insert the item composition to the param args which will always return a non null provider statically
+        final ItemProvider provider = CompositionManager.get(example);
         System.out.println(provider.toString());
     }
 
